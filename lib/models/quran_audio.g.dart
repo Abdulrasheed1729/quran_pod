@@ -6,7 +6,7 @@ part of 'quran_audio.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-QuranAudio _$QuranAudioFromJson(Map<String, dynamic> json) => QuranAudio(
+Quran _$QuranFromJson(Map<String, dynamic> json) => Quran(
       identifier: json['identifier'] as String,
       language: json['language'] as String,
       name: json['name'] as String,
@@ -15,8 +15,7 @@ QuranAudio _$QuranAudioFromJson(Map<String, dynamic> json) => QuranAudio(
       type: json['type'] as String,
     );
 
-Map<String, dynamic> _$QuranAudioToJson(QuranAudio instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$QuranToJson(Quran instance) => <String, dynamic>{
       'identifier': instance.identifier,
       'language': instance.language,
       'name': instance.name,

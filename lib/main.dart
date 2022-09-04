@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
-import 'package:quran_pod/cubits/cubit/quran_audio_cubit.dart';
-import 'package:quran_pod/repository/quran_repository.dart';
+import 'package:provider/provider.dart';
+import 'package:quran_pod/audio_provider.dart';
+import 'package:quran_pod/models/quran_audio.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized;
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => AudioProvider(Client()),
+      builder: (context, child) {
+        Provider.of<AudioProvider>(context).fetchQuran();
+        return const MyApp();
+      },
+      // child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,19 +23,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<AudioProvider>(context).fetchQuran();
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BlocProvider(
-        create: (context) => QuranAudioCubit(
-          quranRepository: QuranRepository(
-            httpClient: Client(),
-          ),
-        ),
-        child: const MyHomePage(),
-      ),
+      home: const MyHomePage(),
     );
   }
 }
@@ -42,30 +46,31 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    context.read<QuranAudioCubit>().loadQuranAudios();
   }
 
   @override
   Widget build(BuildContext context) {
+    final audio = Provider.of<AudioProvider>(context);
     return Scaffold(
-      body: BlocBuilder<QuranAudioCubit, QuranAudioState>(
-        builder: (context, state) {
-          if (state is QuranAudioLoaded) {
-            return ListView.builder(
-              itemCount: state.quranAudio.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  title: Text(
-                    state.quranAudio[index].englishName,
-                  ),
-                );
-              },
-            );
-          } else {
-            return const Text('data');
-          }
+      body: ListView.builder(
+        itemCount: audio.qurans.length,
+        itemBuilder: (context, index) {
+          // audio.fetchQuran();
+          return ListTile(
+            title: Text(audio.qurans[index].englishName),
+          );
         },
       ),
     );
+  }
+}
+
+class SurahPage extends StatelessWidget {
+  const SurahPage({Key? key, required this.quran}) : super(key: key);
+  final Quran quran;
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold();
   }
 }

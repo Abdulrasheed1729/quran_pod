@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'quran_audio.g.dart';
 
 @JsonSerializable()
-class QuranAudio extends Equatable {
+class Quran extends Equatable {
   final String identifier;
   final String language;
   final String name;
@@ -12,7 +12,7 @@ class QuranAudio extends Equatable {
   final String format;
   final String type;
 
-  const QuranAudio({
+  const Quran({
     required this.identifier,
     required this.language,
     required this.name,
@@ -21,10 +21,9 @@ class QuranAudio extends Equatable {
     required this.type,
   });
 
-  factory QuranAudio.fromJson(Map<String, dynamic> json) =>
-      _$QuranAudioFromJson(json);
+  factory Quran.fromJson(Map<String, dynamic> json) => _$QuranFromJson(json);
 
-  Map<String, dynamic> toJson() => _$QuranAudioToJson(this);
+  Map<String, dynamic> toJson() => _$QuranToJson(this);
 
   @override
   List<Object?> get props => [
