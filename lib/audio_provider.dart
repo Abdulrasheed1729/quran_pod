@@ -21,7 +21,7 @@ class AudioProvider extends ChangeNotifier {
 
   List<String> audioUrls = [];
 
-  var _currentAssetPosition = -1;
+  var _currentAssetPosition = 0;
 
   final http.Client httpClient;
 
@@ -38,15 +38,17 @@ class AudioProvider extends ChangeNotifier {
   void open(int quranIndex) async {
     // final fetchedQurans = await quranRepository.fetchQuran();
     qurans = await fetchQuran();
-    _currentAssetPosition = quranIndex % qurans.length;
+    _currentAssetPosition = quranIndex % 114;
+    //  % qurans.length;
     _assetAudioPlayer.open(
       Audio.network(
-        'https://cdn.islamic.network/quran/audio-surah/128/${qurans[_currentAssetPosition].identifier}/$_currentAssetPosition.mp3',
+        'https://cdn.islamic.network/quran/audio-surah/128/${qurans[_currentAssetPosition].identifier}/${_currentAssetPosition + 1}.mp3',
         metas: Metas(
           artist: qurans[_currentAssetPosition].englishName,
         ),
       ),
       showNotification: true,
+      loopMode: LoopMode.playlist,
     );
     notifyListeners();
   }
@@ -58,14 +60,18 @@ class AudioProvider extends ChangeNotifier {
 
   void next() {
     _currentAssetPosition++;
-    open(_currentAssetPosition);
+    open(_currentAssetPosition + 1);
     notifyListeners();
   }
 
   void prev() {
     _currentAssetPosition--;
-    open(_currentAssetPosition);
+    open(_currentAssetPosition - 1);
     notifyListeners();
+  }
+
+  void close() {
+    _assetAudioPlayer.stop();
   }
 
   // void getQuranAudiosUrl() async {

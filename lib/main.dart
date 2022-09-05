@@ -52,13 +52,32 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final audio = Provider.of<AudioProvider>(context);
     return Scaffold(
-      body: ListView.builder(
-        itemCount: audio.qurans.length,
-        itemBuilder: (context, index) {
-          // audio.fetchQuran();
-          return ListTile(
-            title: Text(audio.qurans[index].englishName),
-          );
+      appBar: AppBar(title: const Text('Quran Pod')),
+      body: FutureBuilder<List<Quran>>(
+        initialData: const <Quran>[],
+        future: audio.fetchQuran(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                // audio.fetchQuran();
+                return ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => SurahPage(
+                          quran: snapshot.data![index],
+                        ),
+                      ),
+                    );
+                  },
+                  title: Text(snapshot.data![index].englishName),
+                );
+              },
+            );
+          }
+          return const Text('ERROR');
         },
       ),
     );
@@ -71,6 +90,19 @@ class SurahPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(quran.englishName),
+      ),
+      body: ListView.builder(
+        itemCount: 114,
+        itemBuilder: (context, index) => ListTile(
+          onTap: () {
+            Provider.of<AudioProvider>(context, listen: false).open(index + 1);
+          },
+          title: Text('${quran.englishName}  ${index + 1}'),
+        ),
+      ),
+    );
   }
 }
