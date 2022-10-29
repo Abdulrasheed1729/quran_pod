@@ -37,5 +37,12 @@ class Quran extends Equatable {
 }
 
 const String json = """
-{"identifier":"ar.abdulazizazzahrani","language":"ar","name":"Abdulaziz Az-Zahrani","englishName":"Abdulaziz Az-Zahrani","format":"audio","type":"surahbysurah"}
+{
+  "identifier":"ar.abdulazizazzahrani",
+  "language":"ar",
+  "name":"Abdulaziz Az-Zahrani",
+  "englishName":"Abdulaziz Az-Zahrani",
+  "format":"audio",
+  "type":"surahbysurah"
+}
 """;
