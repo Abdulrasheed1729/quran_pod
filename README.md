@@ -2,7 +2,7 @@
 A app for Muslims to stream **Al-Qur'an** recitations online.
 
 ## Technology Used 🔧
-This app is built with the [*Flutter*](https://flutter.dev) framework.
+This app is built with the [*Flutter*](https://flutter.dev) framework and also uses data from the [Al-Quran cloud api](https://alquran.cloud/api).
 ## Features 🧩
 
 * Users can select reciter of their choice form the list of reciters
