@@ -41,6 +41,10 @@ flutter run
 ```
 to run the app.
 
+## Release 
+
+You can download the app apk file [here](https://drive.google.com/drive/folders/17fIgicZ31YGC8vbRaUE_buvmAzrph5J5?usp=sharing).
+
 ## Contributing 
 
 If you have any issue with app or you have any suggestion consider opening a issue [**here**](https://github.com/Abdulrasheed1729/quran_pod/issues).
