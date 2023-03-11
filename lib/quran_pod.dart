@@ -8,7 +8,7 @@ class QuranPod extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Quran Pod',
+      title: 'Al-Qur\'an Pod',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

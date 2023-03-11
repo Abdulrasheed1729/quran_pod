@@ -11,9 +11,9 @@ void main() async {
     androidShowNotificationBadge: true,
     androidNotificationOngoing: true,
   );
-  runApp(const QuranPod()
-      // child: const MyApp(),
-      );
+  runApp(
+    const QuranPod(),
+  );
 }
 
 
