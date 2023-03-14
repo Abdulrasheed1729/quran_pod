@@ -3,13 +3,6 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 class Reciter {
-  String identifier;
-  String language;
-  String name;
-  String englishName;
-  String format;
-  String type;
-
   Reciter({
     required this.identifier,
     required this.language,
@@ -18,10 +11,6 @@ class Reciter {
     required this.format,
     required this.type,
   });
-
-  factory Reciter.fromJson(String source) =>
-      Reciter.fromMap(json.decode(source) as Map<String, dynamic>);
-
   factory Reciter.fromMap(Map<String, dynamic> json) {
     return Reciter(
       identifier: json['identifier'] as String,
@@ -33,8 +22,17 @@ class Reciter {
     );
   }
 
+  factory Reciter.fromJson(String source) =>
+      Reciter.fromMap(json.decode(source) as Map<String, dynamic>);
+  String identifier;
+  String language;
+  String name;
+  String englishName;
+  String format;
+  String type;
+
   Map<String, dynamic> toMap() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final data = <String, dynamic>{};
     data['identifier'] = identifier;
     data['language'] = language;
     data['name'] = name;

@@ -119,19 +119,20 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
           children: [
             const SizedBox(height: 30),
             StreamBuilder<SequenceState?>(
-                stream: _audioPlayer.sequenceStateStream,
-                builder: (context, snapshot) {
-                  final state = snapshot.data;
+              stream: _audioPlayer.sequenceStateStream,
+              builder: (context, snapshot) {
+                final state = snapshot.data;
 
-                  if (state?.sequence.isEmpty ?? true) {
-                    return const SizedBox();
-                  }
-                  final metadata = state!.currentSource!.tag as MediaItem;
-                  return MediaMetadata(
-                    title: metadata.title,
-                    artist: widget.reciter.englishName,
-                  );
-                }),
+                if (state?.sequence.isEmpty ?? true) {
+                  return const SizedBox();
+                }
+                final metadata = state!.currentSource!.tag as MediaItem;
+                return MediaMetadata(
+                  title: metadata.title,
+                  artist: widget.reciter.englishName,
+                );
+              },
+            ),
             const SizedBox(height: 8),
             StreamBuilder<PositionData>(
               stream: _positionDataStream,

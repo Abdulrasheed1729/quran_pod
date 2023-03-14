@@ -3,13 +3,6 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 class Surah {
-  final int number;
-  final String name;
-  final String englishName;
-  final String englishNameTranslation;
-  final int numberOfAyahs;
-  final String revelationType;
-
   Surah({
     required this.number,
     required this.name,
@@ -18,10 +11,6 @@ class Surah {
     required this.numberOfAyahs,
     required this.revelationType,
   });
-
-  factory Surah.fromJson(String source) =>
-      Surah.fromMap(json.decode(source) as Map<String, dynamic>);
-
   factory Surah.fromMap(Map<String, dynamic> json) {
     return Surah(
       number: json['number'] as int,
@@ -32,6 +21,15 @@ class Surah {
       revelationType: json['revelationType'] as String,
     );
   }
+
+  factory Surah.fromJson(String source) =>
+      Surah.fromMap(json.decode(source) as Map<String, dynamic>);
+  final int number;
+  final String name;
+  final String englishName;
+  final String englishNameTranslation;
+  final int numberOfAyahs;
+  final String revelationType;
 
   Map<String, dynamic> toMap() {
     return {

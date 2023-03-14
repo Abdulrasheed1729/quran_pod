@@ -1,3 +1,5 @@
+// ignore_for_file: inference_failure_on_instance_creation
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:quran_pod/models/models.dart';
@@ -27,7 +29,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Al-Qur\'an Pod'),
+        title: const Text("Al-Qur'an Pod"),
         actions: [
           IconButton(
             onPressed: () {},
@@ -88,7 +90,8 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.grey,
                         ),
                         onTap: () {
-                          Navigator.of(context).push(
+                          Navigator.push(
+                            context,
                             MaterialPageRoute(
                               builder: (context) => AudioPlayerPage(
                                 reciter: snapshot.data![index],
@@ -107,9 +110,10 @@ class _HomePageState extends State<HomePage> {
               );
             } else {
               return const Center(
-                  child: CircularProgressIndicator(
-                color: Colors.grey,
-              ));
+                child: CircularProgressIndicator(
+                  color: Colors.grey,
+                ),
+              );
             }
           },
         ),
