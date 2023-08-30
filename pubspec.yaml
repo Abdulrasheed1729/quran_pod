@@ -29,7 +29,7 @@ environment:
 dependencies:
   audio_video_progress_bar: ^1.0.1
   auto_size_text: ^3.0.0
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.6
   equatable: ^2.0.5
   flutter:
     sdk: flutter
