@@ -268,10 +268,10 @@ packages:
     dependency: "direct main"
     description:
       name: just_audio_background
-      sha256: d290c9c450083aee40cc481e2cb4c088dcbca35961598970ea1b6a6f6c68ae13
+      sha256: "3454ffc97edfa1282b7f42759bfa8aa13d9114a24465f4101e0d3ae58a9327fb"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1-beta.10"
+    version: "0.0.1-beta.11"
   just_audio_platform_interface:
     dependency: transitive
     description:
