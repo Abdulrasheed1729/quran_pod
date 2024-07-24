@@ -1,0 +1,18 @@
+
+[31mFAILURE: Build failed with an exception.[39m
+
+Gradle could not start your build.
+> Cannot create service of type TaskExecuter using method ProjectExecutionServices.createTaskExecuter() as there is a problem with parameter #14 of type ReservedFileSystemLocationRegistry
+> Cannot create service of type ReservedFileSystemLocationRegistry using method ProjectExecutionServices.createReservedFileLocationRegistry() as there is a problem with parameter #1 of type List<ReservedFileSystemLocation>
+> Could not create service of type ExecutionHistoryStore using ExecutionGradleServices.createExecutionHistoryStore().[39m
+> Unexpected lock protocol found in lock file. Expected 3, found 0.[39m
+
+[31m* Try:[39m
+[31m> Run with --stacktrace option to get the stack trace.[39m
+[31m> Run with --info or --debug option to get more log output.[39m
+[31m> Run with --scan to get full insights.[39m
+
+[31m* Get more help at https://help.gradle.org[39m
+
+[31mBUILD FAILED in 3s[39m
+[31mError: Gradle task assembleDebug failed with exit code 1[39m
